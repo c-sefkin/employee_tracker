@@ -1,0 +1,26 @@
+<h1>Welcome to the Employee Page!</h1>
+
+<p>Add an employee to the database:</p>
+
+<form action="/employees" method="post">
+  <label for="name">Employee Name:</label>
+  <input id="name" name="name" type="name">
+
+  <button type="submit">Add Employee</button>
+</form>
+
+<% if @employees.any?() %>
+  <p>Click on an employee to see which division they are assigned to or to change their assignment:</p>
+
+  <ul>
+    <% @employees.each do |employee| %>
+    <li><a href="/employees/<%= employee.id() %>"><%= employee.name() %></a></li>
+    <% end %>
+  </ul>
+  <% else %>
+    <p>There are no employees added yet!</p>
+    <% end %>
+
+  <p><a href="/divisions">See all divisions</a><p>
+
+  <p><a href="/">Return to homepage</a></p>

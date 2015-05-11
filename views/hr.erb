@@ -1,0 +1,34 @@
+<h1>HR Portal</h1>
+<h3> HR personnel may edit Division and Employee information here</h3>
+
+<p><a href="/divisions">Add a new division</a></p>
+<p><a href="/employees">Add a new employee</a></p>
+
+<h3>Here are all the divisions in this company:</h3>
+
+<% if @divisions.any?() %>
+
+  <p>Click on a division to it's current employees and to assign additional employees</p>
+
+  <ul>
+    <% @divisions.each do |division| %>
+    <li><a href="/divisions/<%= division.id() %>"><%= division.description() %></a></li>
+    <% end %>
+  </ul>
+  <% else %>
+    <p>There are no divisions listed yet!</p>
+  <% end %>
+
+  <h3>Here are all of the employees at this company:</h3>
+
+  <% if @employees.any?() %>
+  <p>Click on an employee to see what division they are employed under, or to assign them to a new division:</p>
+
+  <ul>
+    <% @employees.each do |employee| %>
+    <li><a href="/employees/<%= employee.id() %>"><%= employee.name() %></a></li>
+    <% end %>
+  </ul>
+  <% else %>
+    <p>There are no employees listed yet!</p>
+    <% end %>

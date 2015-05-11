@@ -1,0 +1,24 @@
+<h1>Division Info Page</h1>
+<h2>Description: <%= @division.description() %></h2>
+<h3>Employees:</h3>
+
+<% if @employees.any?() %>
+  <form action="/divisions/<%= @division.id() %>" method="post">
+    <input type="hidden" name="method" value="patch">
+    <% @employees.each() do |employee| %>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="employee_ids[]" value="<%= employee.id() %>"><%= employee.name() %>
+      </label>
+    </div>
+    <% end %>
+    <button type="submit">Add Employees</button>
+  </form>
+  <% end %>
+  <ul>
+    <% @division.employees().each() do |employee| %>
+    <li><%= employee.name()%></li>
+    <% end %>
+  </ul>
+
+  <p><a href="/">Return to Homepage</a></p>

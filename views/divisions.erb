@@ -1,0 +1,26 @@
+<h1>Welcome to the Divisions Page!</h1>
+
+<p>Add a division to the database:</p>
+
+<form action="/divisions" method="post">
+  <label for="description">Division Description:</label>
+  <input id="description" name="description" type="text">
+
+  <button type="submit">Add Division</button>
+</form>
+
+<% if @divisions.any?() %>
+<p>Click on a Division to see it's current employees or to add/remove employees</p>
+
+<ul>
+  <% @divisions.each do |division| %>
+  <li><a href="/divisions/<%= division.id() %>"><%= division.description() %></a></li>
+  <% end %>
+</ul>
+<% else %>
+<p>There are no divisions added yet!</p>
+<% end %>
+
+<p><a href="/employees">See all employees</a></p>
+
+<p><a href="/">Return to homepage</p>
