@@ -56,6 +56,10 @@ patch("/employees/:id") do
   division_ids = params.fetch("division_ids", [])
   @employee.update({:division_ids => division_ids})
   @divisions = Division.all()
+  if params.has_key?("name")
+    name = params.fetch("name")
+    @employee.update({:name => name})
+  end
   erb(:employee_info)
 end
 
@@ -68,11 +72,16 @@ get("/divisions/:id") do
 end
 
 patch("/divisions/:id") do
+  # description = params.fetch("description")
   division_id = params.fetch("id").to_i()
   @division = Division.find(division_id)
   employee_ids = params.fetch("employee_ids", [])
   @division.update({:employee_ids => employee_ids})
   @employees = Employee.all()
+  if params.has_key?("description")
+    description = params.fetch("description")
+    @division.update({:description => description})
+  end
   erb(:division_info)
 end
 
