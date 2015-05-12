@@ -1,0 +1,33 @@
+<h1>PM Portal</h1>
+<h3> Project managers may edit project information here</h3>
+
+<p><a href="/projects">Add a new project</a></p>
+
+<h3>Here are the projects:</h3>
+
+<% if @projects.any?() %>
+
+  <p>Click on a project to see it's status and to assign employees</p>
+
+  <ul>
+    <% @projects.each do |project| %>
+    <li><a href="/projects/<%= project.id() %>"><%= project.description() %></a></li>
+    <% end %>
+  </ul>
+  <% else %>
+    <p>There are no projects listed yet!</p>
+  <% end %>
+
+  <h3>Here are all of the employees at this company:</h3>
+
+  <% if @employees.any?() %>
+  <p>Click on an employee to see what division they are employed under, or to assign them to a new division:</p>
+
+  <ul>
+    <% @employees.each do |employee| %>
+    <li><a href="/employees/<%= employee.id() %>"><%= employee.name() %></a></li>
+    <% end %>
+  </ul>
+  <% else %>
+    <p>There are no employees listed yet!</p>
+    <% end %>

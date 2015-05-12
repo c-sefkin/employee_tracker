@@ -1,0 +1,23 @@
+<h1>Current Projects</h1>
+
+<% if @projects.any?() %>
+  <p>Click on a project to see who is working on it, or to assign new employees</p>
+  <ul>
+    <% @projects.each do |project| %>
+    <li><a href="/projects/<%= project.id() %>"><%= project.description() %></a></li>
+    <% end %>
+  </ul>
+  <% else %>
+    <p>There are no projects added yet!</p>
+    <% end %>
+
+  <p>Add a project:</p>
+
+  <form action="/projects" method="post">
+    <label for="description">Description:</label>
+    <input id="description" name="description" type="text">
+
+    <button type="submit">Add New Project</button>
+  </form>
+
+  <p><a href="/">Return to Main Page</a></p>
