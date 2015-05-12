@@ -75,3 +75,19 @@ patch("/divisions/:id") do
   @employees = Employee.all()
   erb(:division_info)
 end
+
+delete('/employees/:id') do
+  employee_id = params.fetch("id").to_i()
+  employee = Employee.find(employee_id)
+  employee.delete()
+  @employees = Employee.all()
+  erb(:employees)
+end
+
+delete('/divisions/:id') do
+  division_id = params.fetch("id").to_i()
+  division = Division.find(division_id)
+  division.delete()
+  @divisions = Division.all()
+  erb(:divisions)
+end

@@ -21,4 +21,10 @@
     <% end %>
   </ul>
 
-  <p><a href="/">Return to Homepage</a></p>
+  <h3>Delete this Division from the company</h3>
+  <form action="/divisions/<%= @division.id() %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <button type="submit">Delete Division</button>
+  </form>
+
+  <p><a href="/hr">Return HR Portal</a></p>

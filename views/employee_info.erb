@@ -19,5 +19,11 @@
     <li><%= division.description()%></li>
     <% end %>
   </ul>
-  
-  <p><a href="/">Return to Homepage</a></p>
+
+  <h3>Delete this employee from the company</h3>
+  <form action="/employees/<%= @employee.id() %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <button type="submit">Delete Employee</button>
+  </form>
+
+  <p><a href="/hr">Return to HR Portal</a></p>
