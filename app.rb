@@ -21,7 +21,7 @@ get('/divisions') do
   erb(:divisions)
 end
 
-post('/divisions') do
+post("/divisions") do
   description = params.fetch("description")
   division = Division.new({:description => description, :id => nil})
   division.save()
@@ -63,6 +63,7 @@ get("/divisions/:id") do
   id = params.fetch("id").to_i()
   @division = Division.find(id)
   @employees = Employee.all()
+  @divisions = Division.all()
   erb(:division_info)
 end
 
